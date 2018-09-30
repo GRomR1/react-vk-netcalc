@@ -1,0 +1,7 @@
+.AddressValid {
+    background-color: aquamarine;
+}
+
+.AddressInvalid {
+    background-color: lightsalmon;
+}
