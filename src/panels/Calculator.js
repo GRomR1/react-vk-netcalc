@@ -2,12 +2,12 @@ import React from 'react';
 import {View, HeaderButton, Panel, Group, Button, PanelHeader, FormLayout, Div, Select, Input} from '@vkontakte/vkui';
 import {InfoRow, List, Cell, platform, colors, IOS} from '@vkontakte/vkui';
 import validator from 'validator';
-import './Calculator.css';
-
 import '@vkontakte/vkui/dist/vkui.css';
-import './Persik.css';
+
 import Icon28ChevronBack from '@vkontakte/icons/dist/28/chevron_back';
 import Icon24Back from '@vkontakte/icons/dist/24/back';
+
+// import './Calculator.css';
 
 import IPv4_Address from '../misc/ip_calculations'
 
@@ -38,8 +38,8 @@ class Calculator extends React.Component {
 
     handleAddressChange(event) {
         const value = event.target.value;
-        console.log("handleAddressChange " + value);
-        console.log(validator.isIP(value));
+        // console.log("handleAddressChange " + value);
+        // console.log(validator.isIP(value));
 
         this.setState({
             address: value,
@@ -49,7 +49,7 @@ class Calculator extends React.Component {
 
     handleNetmaskChange(event) {
         const value = event.target.value;
-        console.log("handleNetmaskChange " + value);
+        // console.log("handleNetmaskChange " + value);
 
         this.setState({
             netmask: value
@@ -57,13 +57,13 @@ class Calculator extends React.Component {
     }
 
     go(e) {
-        console.log("go " + e.currentTarget.dataset.to);
+        // console.log("go " + e.currentTarget.dataset.to);
         if(this.state.valid === true) {
             let res = IPv4_Address(
                 this.state.address,
                 this.state.netmask
             );
-            console.log(res);
+            // console.log(res);
             this.setState({
                 activePanel: e.currentTarget.dataset.to,
                 result: res
@@ -135,7 +135,8 @@ class Calculator extends React.Component {
                             </Div>
                         </FormLayout>
                         <Div>
-                            <Button size="xl" level="2" onClick={this.go} data-to="calculator_result">
+                            <Button size="xl" level="2" onClick={this.go} data-to="calculator_result"
+                                    disabled={!this.state.valid} >
                                 Calculate
                             </Button>
                         </Div>
