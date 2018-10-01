@@ -9,6 +9,9 @@ import Icon24Back from '@vkontakte/icons/dist/24/back';
 
 // import './Calculator.css';
 
+import Footer from './Footer';
+import About from './About';
+
 import IPv4_Address from '../misc/ip_calculations'
 
 const osname = platform();
@@ -31,7 +34,7 @@ class Calculator extends React.Component {
             }
         };
         this.go = this.go.bind(this);
-        this.IPv4_Address = IPv4_Address;
+        // this.IPv4_Address = IPv4_Address;
         this.handleAddressChange = this.handleAddressChange.bind(this);
         this.handleNetmaskChange = this.handleNetmaskChange.bind(this);
     }
@@ -141,6 +144,7 @@ class Calculator extends React.Component {
                             </Button>
                         </Div>
                     </Group>
+                    <Footer go={(e) =>  this.setState({activePanel: e.currentTarget.dataset.to})}/>
                 </Panel>
 
 
@@ -193,6 +197,11 @@ class Calculator extends React.Component {
                         </List>
                     </Group>
                 </Panel>
+
+
+                <About id='about'
+                       go={(e) =>  this.setState({activePanel: e.currentTarget.dataset.to})}
+                       back='calculator'/>
             </View>
         );
     }
